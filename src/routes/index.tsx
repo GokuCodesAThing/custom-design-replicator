@@ -70,7 +70,7 @@ const GALLERY = [
 function SectionHead({ eyebrow, title, sub, light }: { eyebrow: string; title: string; sub?: string; light?: boolean }) {
   return (
     <div className="mx-auto mb-12 max-w-2xl text-center">
-      <p className="text-xs font-bold uppercase tracking-[0.25em] text-accent-foreground/70 [&]:text-current">
+      <p className="text-xs font-bold uppercase tracking-[0.25em]">
         <span className={light ? "text-accent" : "rounded bg-accent px-2 py-1 text-accent-foreground"}>{eyebrow}</span>
       </p>
       <h2 className={`mt-4 text-3xl font-black sm:text-4xl ${light ? "text-primary-foreground" : "text-primary"}`}>{title}</h2>
