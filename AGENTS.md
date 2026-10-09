@@ -8,3 +8,6 @@
 > Commits you push to the connected branch sync back to Lovable and show up in
 > the editor, so keep the branch in a working state.
 <!-- LOVABLE:END -->
+
+- Business contact details (phone, hours, map query) live in src/lib/site-config.ts; call/WhatsApp UI renders only when phone is set — never show unverified contact info.
+- Enquiries are stored in the `enquiries` table (insert-only for anon); validation rules live in src/lib/enquiry.ts and are shared by the form and tests.
