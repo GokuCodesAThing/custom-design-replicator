@@ -27,6 +27,26 @@ export const Route = createFileRoute("/")({
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
     ],
+    scripts: [
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "LocalBusiness",
+          name: SITE.name,
+          email: SITE.email,
+          address: {
+            "@type": "PostalAddress",
+            streetAddress: "Anupshahr Road, Bhatauti C.D.F.",
+            addressLocality: "Aligarh",
+            addressRegion: "Uttar Pradesh",
+            postalCode: "202001",
+            addressCountry: "IN",
+          },
+          description: "Manufacturer and supplier of PCC, MCC, APFC, feeder panels, distribution boards and control & automation panels in Aligarh.",
+        }),
+      },
+    ],
   }),
   component: Index,
 });
