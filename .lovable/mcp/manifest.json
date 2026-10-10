@@ -1,0 +1,126 @@
+{
+  "version": 1,
+  "sdk_version": "3.0.5",
+  "path": "/mcp",
+  "auth": {
+    "type": "oauth",
+    "issuer": "https://wtfwwbatpeubutfufjad.supabase.co/auth/v1",
+    "accepted_audiences": [
+      "authenticated"
+    ]
+  },
+  "mcp": {
+    "server": {
+      "name": "custom-design-replicator",
+      "version": "0.1.0",
+      "title": "Custom Design Replicator"
+    },
+    "tools": [
+      {
+        "name": "list_products",
+        "title": "List products",
+        "description": "List the electrical panel products and services offered by Vikas Engineering Works.",
+        "annotations": {
+          "readOnlyHint": true,
+          "idempotentHint": true,
+          "openWorldHint": false
+        },
+        "inputSchema": {
+          "$schema": "https://json-schema.org/draft/2020-12/schema",
+          "type": "object",
+          "properties": {},
+          "additionalProperties": false
+        },
+        "outputSchema": null
+      },
+      {
+        "name": "submit_enquiry",
+        "title": "Submit enquiry",
+        "description": "Submit a new product enquiry / quote request to Vikas Engineering Works.",
+        "annotations": {
+          "readOnlyHint": false,
+          "destructiveHint": false,
+          "openWorldHint": false
+        },
+        "inputSchema": {
+          "type": "object",
+          "properties": {
+            "name": {
+              "type": "string",
+              "minLength": 1,
+              "description": "Contact person name"
+            },
+            "company": {
+              "type": "string",
+              "description": "Company name"
+            },
+            "phone": {
+              "type": "string",
+              "minLength": 1,
+              "description": "Phone number"
+            },
+            "email": {
+              "type": "string",
+              "format": "email",
+              "description": "Email address"
+            },
+            "product": {
+              "type": "string",
+              "minLength": 1,
+              "description": "Product of interest, e.g. PCC Panel"
+            },
+            "location": {
+              "type": "string",
+              "minLength": 1,
+              "description": "Project / delivery location"
+            },
+            "quantity": {
+              "type": "string",
+              "description": "Required quantity"
+            },
+            "message": {
+              "type": "string",
+              "minLength": 1,
+              "description": "Requirement details"
+            }
+          },
+          "required": [
+            "name",
+            "phone",
+            "product",
+            "location",
+            "message"
+          ],
+          "additionalProperties": false,
+          "$schema": "http://json-schema.org/draft-07/schema#"
+        },
+        "outputSchema": null
+      },
+      {
+        "name": "list_enquiries",
+        "title": "List enquiries",
+        "description": "List recent customer enquiries received by Vikas Engineering Works (signed-in users only).",
+        "annotations": {
+          "readOnlyHint": true,
+          "idempotentHint": true,
+          "openWorldHint": false
+        },
+        "inputSchema": {
+          "type": "object",
+          "properties": {
+            "limit": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 100,
+              "default": 20,
+              "description": "Maximum number of enquiries to return"
+            }
+          },
+          "additionalProperties": false,
+          "$schema": "http://json-schema.org/draft-07/schema#"
+        },
+        "outputSchema": null
+      }
+    ]
+  }
+}
