@@ -78,8 +78,6 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Vikas Engineering Works — Electrical Panel Manufacturer in Aligarh" },
-      { name: "description", content: "Manufacturer and supplier of PCC, MCC, APFC, feeder panels, distribution boards and control & automation panels in Aligarh." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
     ],
