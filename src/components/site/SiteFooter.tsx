@@ -17,7 +17,13 @@ export function SiteFooter() {
         <div>
           <h3 className="text-sm font-bold uppercase tracking-wider text-accent">Quick Links</h3>
           <ul className="mt-4 space-y-2 text-sm text-primary-foreground/80">
-            {NAV.map((n) => <li key={n.href}><a href={n.href} className="hover:text-accent">{n.label}</a></li>)}
+            {NAV.map((n) =>
+              n.href.startsWith("/#") ? (
+                <li key={n.href}><a href={n.href} className="hover:text-accent">{n.label}</a></li>
+              ) : (
+                <li key={n.href}><Link to={n.href} className="hover:text-accent">{n.label}</Link></li>
+              ),
+            )}
           </ul>
         </div>
         <div>

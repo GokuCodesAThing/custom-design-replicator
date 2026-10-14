@@ -67,11 +67,17 @@ export function SiteHeader() {
       </div>
       {open && (
         <nav id="mobile-nav" aria-label="Mobile" className="border-t border-primary-foreground/10 px-4 pb-4 lg:hidden">
-          {NAV.map((n) => (
-            <a key={n.href} href={n.href} onClick={() => setOpen(false)} className="block border-b border-primary-foreground/10 py-3 font-medium">
-              {n.label}
-            </a>
-          ))}
+          {NAV.map((n) =>
+            isAnchor(n.href) ? (
+              <a key={n.href} href={n.href} onClick={() => setOpen(false)} className="block border-b border-primary-foreground/10 py-3 font-medium">
+                {n.label}
+              </a>
+            ) : (
+              <Link key={n.href} to={n.href} onClick={() => setOpen(false)} className="block border-b border-primary-foreground/10 py-3 font-medium">
+                {n.label}
+              </Link>
+            ),
+          )}
           <Button asChild variant="cta" className="mt-4 w-full">
             <a href="/#quote" onClick={() => setOpen(false)}>Get a Quote</a>
           </Button>
