@@ -9,8 +9,12 @@ export const NAV = [
   { href: "/#products", label: "Products" },
   { href: "/#services", label: "Services" },
   { href: "/#work", label: "Our Work" },
+  { href: "/team", label: "Our Team" },
   { href: "/#contact", label: "Contact" },
 ];
+
+const isAnchor = (href: string) => href.startsWith("/#");
+const navClass = "text-sm font-medium text-primary-foreground/80 transition-colors hover:text-accent";
 
 export function Logo() {
   return (
