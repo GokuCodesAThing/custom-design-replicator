@@ -9,8 +9,12 @@ export const NAV = [
   { href: "/#products", label: "Products" },
   { href: "/#services", label: "Services" },
   { href: "/#work", label: "Our Work" },
+  { href: "/team", label: "Our Team" },
   { href: "/#contact", label: "Contact" },
 ];
+
+const isAnchor = (href: string) => href.startsWith("/#");
+const navClass = "text-sm font-medium text-primary-foreground/80 transition-colors hover:text-accent";
 
 export function Logo() {
   return (
@@ -33,11 +37,17 @@ export function SiteHeader() {
       <div className="mx-auto grid max-w-7xl grid-cols-[minmax(0,1fr)_auto] items-center gap-4 px-4 py-3 lg:flex lg:justify-between">
         <Logo />
         <nav aria-label="Main" className="hidden items-center gap-7 lg:flex">
-          {NAV.map((n) => (
-            <a key={n.href} href={n.href} className="text-sm font-medium text-primary-foreground/80 transition-colors hover:text-accent">
-              {n.label}
-            </a>
-          ))}
+          {NAV.map((n) =>
+            isAnchor(n.href) ? (
+              <a key={n.href} href={n.href} className={navClass}>
+                {n.label}
+              </a>
+            ) : (
+              <Link key={n.href} to={n.href} className={navClass}>
+                {n.label}
+              </Link>
+            ),
+          )}
         </nav>
         <div className="flex items-center gap-2">
           <Button asChild variant="cta" className="hidden sm:inline-flex">
@@ -57,11 +67,17 @@ export function SiteHeader() {
       </div>
       {open && (
         <nav id="mobile-nav" aria-label="Mobile" className="border-t border-primary-foreground/10 px-4 pb-4 lg:hidden">
-          {NAV.map((n) => (
-            <a key={n.href} href={n.href} onClick={() => setOpen(false)} className="block border-b border-primary-foreground/10 py-3 font-medium">
-              {n.label}
-            </a>
-          ))}
+          {NAV.map((n) =>
+            isAnchor(n.href) ? (
+              <a key={n.href} href={n.href} onClick={() => setOpen(false)} className="block border-b border-primary-foreground/10 py-3 font-medium">
+                {n.label}
+              </a>
+            ) : (
+              <Link key={n.href} to={n.href} onClick={() => setOpen(false)} className="block border-b border-primary-foreground/10 py-3 font-medium">
+                {n.label}
+              </Link>
+            ),
+          )}
           <Button asChild variant="cta" className="mt-4 w-full">
             <a href="/#quote" onClick={() => setOpen(false)}>Get a Quote</a>
           </Button>
